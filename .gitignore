@@ -1,6 +1,7 @@
 HELP.md
 .gradle
 /build/
+/bin/
 !gradle/wrapper/gradle-wrapper.jar
 
 ### STS ###
@@ -27,4 +28,6 @@ HELP.md
 /.nb-gradle/
 
 ### VS Code ###
-.vscode/
+/.vscode/launch.json
+/.vscode/settings.json
+/.vscode/*.code-workspace
