@@ -31,3 +31,6 @@ HELP.md
 /.vscode/launch.json
 /.vscode/settings.json
 /.vscode/*.code-workspace
+
+*.log
+*application.properties

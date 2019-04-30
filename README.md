@@ -12,7 +12,8 @@ A Spring Boot API to easily expose IBMi information as JSON via REST endpoints.
   * DevTools
   * Security
   * Web
-  
+* [JTOpen 9.8](http://jt400.sourceforge.net/)
+
 
 ## Endpoints
 
@@ -46,3 +47,5 @@ A Spring Boot API to easily expose IBMi information as JSON via REST endpoints.
 * [Gradle Docs](https://docs.gradle.org/current/userguide/userguide.html)
 * [JUnit 5 User Guide](https://junit.org/junit5/docs/current/user-guide/)
 * [MvnRepository](https://mvnrepository.com/)
+* [Toolbox for Java and JTOpen](https://developer.ibm.com/articles/i-javatoolbox/#toolbox-for-java-introduction)
+
