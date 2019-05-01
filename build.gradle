@@ -20,10 +20,12 @@ dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.5.6'
     compile group: 'net.sf.jt400', name: 'jt400', version: '9.8', classifier: 'jt400_jdk8'
     compile group: 'org.springframework', name: 'spring-jdbc', version: '5.1.6.RELEASE'
-    //compile group: 'log4j', name: 'log4j', version: '1.2.17'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version: '2.1.4.RELEASE'
     
+    //compile group: 'log4j', name: 'log4j', version: '1.2.17'
+
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
-    implementation 'org.springframework.boot:spring-boot-starter-security'
+    //implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     runtimeOnly 'org.springframework.boot:spring-boot-devtools'
 

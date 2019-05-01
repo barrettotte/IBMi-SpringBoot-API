@@ -1,0 +1,19 @@
+# Test IBMi API
+# CTRL+ALT+R - run request
+
+@baseapi = http://127.0.0.1:8044/api/v1/
+
+
+### Base request
+GET {{baseapi}}/ HTTP/1.1
+Content-Type: application/json
+
+
+### Information base request
+GET {{baseapi}}/info/ HTTP/1.1
+Content-Type: application/json
+
+
+### Test information endpoint
+GET {{baseapi}}/info/hello/ HTTP/1.1
+Content-Type: application/json
