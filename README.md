@@ -5,26 +5,58 @@ A Spring Boot API to easily expose IBMi information as JSON via REST endpoints.
 
 
 ## Dependencies
+* IBMi running V7R3
 * Java 8
+* [JTOpen 9.8](http://jt400.sourceforge.net/)
 * JUnit 5.4.2
 * Spring Boot 2.1.4
   * Actuator
   * DevTools
   * Security
   * Web
-* [JTOpen 9.8](http://jt400.sourceforge.net/)
+
+
+## TODO
+* Endpoint for all catalogs
+* Endpoint for all schemas in catalogs
+* Endpoint for all tables in schemas 
+* Endpoint for all rows/members in table
+* SQLRPGLE or DB2 storedproc for returning JSON (Not sure if needed? Would be cool)
+* Determine how to properly get CL, DDS, and RPG source members
+* Make some CMD, COBOL, C++, SQL, and Python sources on IBMi
+
+
+## Future Goals
+* Endpoint for base IFS /api/v1/ifs
+* Endpoint for viewing message queues (QSYSOPR)
+* Endpoint for viewing printer queues (QPRINT)
 
 
 ## Endpoints
+| Endpoint               | Description                                                    |
+| ---------------------- | -------------------------------------------------------------- |
+| api/v1/                | Base endpoint returning swagger docs                           |
+| api/v1/qsys            | QSYS info base endpoint and available catalogs (databases)     |
+| ../{catalog}           | Catalog (database) info and available schemas (libraries)      |
+| ../{catalog}/{schema}  | Schema (library) info and available tables (physical files)    |
+| ../{schema}/{table}    | Table (physical file) info and available rows (programs)       |
+| ../{table}/{partition} | Table partition (program) info and source code                 |
 
 
 ## Configuration
 ```properties
-# application.properties
-
+# application.properties template
+info.app.name = IBMi API Service
+server.port = 8044
+db.datasource.as400.username = ?
+db.datasource.as400.password = ?
+db.datasource.as400.url = jdbc:as400://?/;prompt=false;naming=system;*LIBL
+db.datasource.as400.driver-class-name = com.ibm.as400.access.AS400JDBCDriver
 ```
 
+
 ## Examples
+* TBD
 
 
 ## Development
@@ -51,6 +83,12 @@ A Spring Boot API to easily expose IBMi information as JSON via REST endpoints.
 * Encrypt application.properties with [Jasypt](https://www.ricston.com/blog/encrypting-properties-in-spring-boot-with-jasypt-spring-boot/)
 * Generated project using [Spring Initializr](https://start.spring.io/)
 * [Gradle Docs](https://docs.gradle.org/current/userguide/userguide.html)
+* IBMi DB2 SQL
+  * [ANS and ISO catalog views](https://www.ibm.com/support/knowledgecenter/SSAE4W_9.1.0/com.ibm.etools.iseries.langref2.doc/rbafzcatalogans.htm)
+  * [DB2 for i SQL reference](https://www.ibm.com/support/knowledgecenter/SSAE4W_9.1.0/com.ibm.etools.iseries.langref2.doc/rbafzintro.htm)
+  * [IBMi catalog tables and views](https://www.ibm.com/support/knowledgecenter/SSAE4W_9.1.0/com.ibm.etools.iseries.langref2.doc/rbafzcatalogtbls.htm)
+  * [ODBC and JDBC catalog views](https://www.ibm.com/support/knowledgecenter/SSAE4W_9.1.0/com.ibm.etools.iseries.langref2.doc/rbafzcatalogodbc.htm)
+* [ILE Editor](https://github.com/worksofbarry/ILEditor) - Inspiration for project
 * Java and AS400 
   * [IBM Knowledge Center](https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_71/rzahh/page1.htm)
   * [Code Examples](https://www.programcreek.com/java-api-examples/?api=com.ibm.as400.access.AS400)
