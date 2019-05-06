@@ -41,6 +41,7 @@ public class AppConfig{
         return dataSource().getConnection();
     }
 
+    @Bean
     public AS400DAO as400DAO(final JdbcTemplate jdbcTemplate){
         return new AS400DAO(jdbcTemplate);
     }
