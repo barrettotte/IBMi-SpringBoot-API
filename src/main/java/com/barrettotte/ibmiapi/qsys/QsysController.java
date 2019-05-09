@@ -1,4 +1,4 @@
-package com.barrettotte.ibmiapi.information;
+package com.barrettotte.ibmiapi.qsys;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -6,20 +6,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/info")
-public class InformationController{
+@RequestMapping("/api/v1/QSYS")
+public class QsysController{
 
     @Autowired
-    private InformationService infoService;
+    private QsysService qsysService;
 
-
+    
     @GetMapping(value={"", "/"})
     public String index(){
-        return "IBMi Information Endpoint";
+        return "IBMi QSYS Endpoint";
     }
 
-    @GetMapping("/hello")
-    public String hello(){
-        return infoService.hello();
+    //TEST
+    @GetMapping(value={"/BOLIB", "/BOLIB/"})
+    public String catalog(){
+        return qsysService.getCatalog("BOLIB");
     }
 }

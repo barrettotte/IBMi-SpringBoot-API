@@ -21,7 +21,8 @@ dependencies {
     compile group: 'net.sf.jt400', name: 'jt400', version: '9.8', classifier: 'jt400_jdk8'
     compile group: 'org.springframework', name: 'spring-jdbc', version: '5.1.6.RELEASE'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version: '2.1.4.RELEASE'
-    
+    compile group: 'org.json', name: 'json', version: '20180813'
+
     //compile group: 'log4j', name: 'log4j', version: '1.2.17'
 
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
@@ -33,7 +34,7 @@ dependencies {
     testCompile 'org.mockito:mockito-junit-jupiter:2.27.0'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
-    testImplementation("org.junit.jupiter:junit-jupiter:5.4.2")
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.4.2'
 }
 
 sourceSets {
@@ -49,7 +50,6 @@ sourceSets {
 
 test {
     useJUnitPlatform{
-        //includeTags 'unitTest'
         includeEngines 'junit-jupiter' //'junit-vintage'
     }
     testLogging {
@@ -63,10 +63,10 @@ test {
         if (!desc.parent) {
             println "\nTest result: ${result.resultType}"
             println "Test summary: " +
-                    "${result.testCount} tests, " +
-                    "${result.successfulTestCount} succeeded, " +
-                    "${result.failedTestCount} failed, " +
-                    "${result.skippedTestCount} skipped"
+              "${result.testCount} tests, " +
+              "${result.successfulTestCount} succeeded, " +
+              "${result.failedTestCount} failed, " +
+              "${result.skippedTestCount} skipped"
         }
     }
 }

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1")
 public class CoreController{
 
-    @GetMapping("/")
+    @GetMapping(value ={"/",""})
     public String index(){
         return "IBMi Core API";
     }

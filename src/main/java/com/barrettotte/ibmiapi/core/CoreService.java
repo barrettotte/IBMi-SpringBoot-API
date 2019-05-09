@@ -11,8 +11,4 @@ public class CoreService{
     @Autowired
     private AS400DAO as400DAO;
 
-    public String Hello(){
-        return "Hello World";
-    }
-
 }

@@ -36,7 +36,7 @@ A Spring Boot API to easily expose IBMi information as JSON via REST endpoints.
 | Endpoint               | Description                                                    |
 | ---------------------- | -------------------------------------------------------------- |
 | api/v1/                | Base endpoint returning swagger docs                           |
-| api/v1/qsys            | QSYS info base endpoint and available catalogs (databases)     |
+| api/v1/QSYS            | QSYS base endpoint and available catalogs (databases)          |
 | ../{catalog}           | Catalog (database) info and available schemas (libraries)      |
 | ../{catalog}/{schema}  | Schema (library) info and available tables (physical files)    |
 | ../{schema}/{table}    | Table (physical file) info and available rows (programs)       |
@@ -95,5 +95,22 @@ db.datasource.as400.driver-class-name = com.ibm.as400.access.AS400JDBCDriver
 * [JUnit 5 User Guide](https://junit.org/junit5/docs/current/user-guide/)
 * [MvnRepository](https://mvnrepository.com/)
 * I used a lot of my coworker's boilerplate code for AS400 + Spring Boot
+* RPGPGM
+  * https://www.rpgpgm.com/2018/01/sql-views-to-list-sql-programs-and.html
+  * https://www.rpgpgm.com/2017/11/sql-view-for-information-about-job.html
+  * https://www.rpgpgm.com/2017/06/sql-views-for-authorization-lists.html
+  * https://www.rpgpgm.com/2017/05/using-sql-for-message-queue-data.html
+  * https://www.rpgpgm.com/2016/01/using-sql-for-objects-statistics.html
+  * https://www.rpgpgm.com/2015/12/almost-everything-you-wanted-to-know.html
+  * https://www.rpgpgm.com/2015/12/output-queue-entries-information-via-sql.html
+  * https://www.rpgpgm.com/2015/11/getting-active-jobs-data-using-sql.html
+  * https://www.rpgpgm.com/2015/11/getting-information-about-user-profiles.html
+  * https://www.rpgpgm.com/2015/10/using-sql-to-get-information-about-job.html
+  * https://www.rpgpgm.com/2015/06/using-sql-to-get-information-from-job.html
+  * https://www.rpgpgm.com/2015/05/getting-information-about-views-and.html
+  * https://www.rpgpgm.com/2014/11/getting-list-of-files-in-ifs-directory.html
 * [Toolbox for Java and JTOpen](https://developer.ibm.com/articles/i-javatoolbox/#toolbox-for-java-introduction)
 
+
+* https://github.com/geoffreywiseman/AS-400-Shell
+* https://www.brightersoftware.net/using-sql-on-file-with-multiple-members
