@@ -11,4 +11,5 @@ public class CoreService{
     @Autowired
     private AS400DAO as400DAO;
 
+    //Meh, I don't really know what I should put in here
 }

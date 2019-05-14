@@ -16,16 +16,6 @@ A Spring Boot API to easily expose IBMi information as JSON via REST endpoints.
   * Web
 
 
-## TODO
-* Endpoint for all catalogs
-* Endpoint for all schemas in catalogs
-* Endpoint for all tables in schemas 
-* Endpoint for all rows/members in table
-* SQLRPGLE or DB2 storedproc for returning JSON (Not sure if needed? Would be cool)
-* Determine how to properly get CL, DDS, and RPG source members
-* Make some CMD, COBOL, C++, SQL, and Python sources on IBMi
-
-
 ## Future Goals
 * Endpoint for base IFS /api/v1/ifs
 * Endpoint for viewing message queues (QSYSOPR)
@@ -33,14 +23,18 @@ A Spring Boot API to easily expose IBMi information as JSON via REST endpoints.
 
 
 ## Endpoints
-| Endpoint               | Description                                                    |
-| ---------------------- | -------------------------------------------------------------- |
-| api/v1/                | Base endpoint returning swagger docs                           |
-| api/v1/QSYS            | QSYS base endpoint and available catalogs (databases)          |
-| ../{catalog}           | Catalog (database) info and available schemas (libraries)      |
-| ../{catalog}/{schema}  | Schema (library) info and available tables (physical files)    |
-| ../{schema}/{table}    | Table (physical file) info and available rows (programs)       |
-| ../{table}/{partition} | Table partition (program) info and source code                 |
+| Endpoint                  | Description                  |
+| ------------------------- | ---------------------------- |
+| /api/v1                   |                              |
+| /api/v1/qsys              |                              |
+| /api/v1/qsys/catalogs     | Get all relational databases |
+| ../catalogs/<A>           |                              |
+| ../catalogs/<A>/schemas   | Get all libraries            |
+| ../schemas/<B>            |                              |
+| ../schemas/<B>/tables     | Get all files                |
+| ../tables/<C>             |                              |
+| ../tables/<C>/paritions   | Get members of file          |
+| ../partitions/<D>         | Get all lines of member      |
 
 
 ## Configuration
@@ -53,10 +47,6 @@ db.datasource.as400.password = ?
 db.datasource.as400.url = jdbc:as400://?/;prompt=false;naming=system;*LIBL
 db.datasource.as400.driver-class-name = com.ibm.as400.access.AS400JDBCDriver
 ```
-
-
-## Examples
-* TBD
 
 
 ## Development
@@ -80,7 +70,6 @@ db.datasource.as400.driver-class-name = com.ibm.as400.access.AS400JDBCDriver
 
 
 ## References
-* Encrypt application.properties with [Jasypt](https://www.ricston.com/blog/encrypting-properties-in-spring-boot-with-jasypt-spring-boot/)
 * Generated project using [Spring Initializr](https://start.spring.io/)
 * [Gradle Docs](https://docs.gradle.org/current/userguide/userguide.html)
 * IBMi DB2 SQL
@@ -94,7 +83,8 @@ db.datasource.as400.driver-class-name = com.ibm.as400.access.AS400JDBCDriver
   * [Code Examples](https://www.programcreek.com/java-api-examples/?api=com.ibm.as400.access.AS400)
 * [JUnit 5 User Guide](https://junit.org/junit5/docs/current/user-guide/)
 * [MvnRepository](https://mvnrepository.com/)
-* I used a lot of my coworker's boilerplate code for AS400 + Spring Boot
+
+
 * RPGPGM
   * https://www.rpgpgm.com/2018/01/sql-views-to-list-sql-programs-and.html
   * https://www.rpgpgm.com/2017/11/sql-view-for-information-about-job.html
@@ -109,8 +99,5 @@ db.datasource.as400.driver-class-name = com.ibm.as400.access.AS400JDBCDriver
   * https://www.rpgpgm.com/2015/06/using-sql-to-get-information-from-job.html
   * https://www.rpgpgm.com/2015/05/getting-information-about-views-and.html
   * https://www.rpgpgm.com/2014/11/getting-list-of-files-in-ifs-directory.html
+  
 * [Toolbox for Java and JTOpen](https://developer.ibm.com/articles/i-javatoolbox/#toolbox-for-java-introduction)
-
-
-* https://github.com/geoffreywiseman/AS-400-Shell
-* https://www.brightersoftware.net/using-sql-on-file-with-multiple-members
