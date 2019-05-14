@@ -2,18 +2,56 @@
 # CTRL+ALT+R - run request
 
 @baseapi = http://127.0.0.1:8044/api/v1/
-
+@catalog = ???
+@schema = bolib
 
 ### Base request
 GET {{baseapi}}/ HTTP/1.1
 Content-Type: application/json
 
 
-### Information base request
-GET {{baseapi}}/info/ HTTP/1.1
+### Base qsys
+GET {{baseapi}}/qsys HTTP/1.1
 Content-Type: application/json
 
 
-### Test information endpoint
-GET {{baseapi}}/info/hello/ HTTP/1.1
+### Get all catalogs
+GET {{baseapi}}/qsys/catalogs HTTP/1.1
 Content-Type: application/json
+
+
+### Get a catalog
+GET {{baseapi}}/qsys/catalogs/{{catalog}} HTTP/1.1
+Content-Type: application/json
+
+
+### Get all schemas in catalog
+GET {{baseapi}}/qsys/catalogs/{{catalog}}/schemas HTTP/1.1
+Content-Type: application/json
+
+
+### Get a schema
+GET {{baseapi}}/qsys/catalogs/{{catalog}}/schemas/{{schema}} HTTP/1.1
+Content-Type: application/json
+
+
+### Get all tables in schema
+GET {{baseapi}}/qsys/catalogs/{{catalog}}/schemas/{{schema}}/tables HTTP/1.1
+Content-Type: application/json
+
+
+### Get a table
+GET {{baseapi}}/qsys/catalogs/{{catalog}}/schemas/{{schema}}/tables/qrpglesrc HTTP/1.1
+Content-Type: application/json
+
+
+## Get all partitions in table
+GET {{baseapi}}/qsys/catalogs/{{catalog}}/schemas/bolib/tables/qrpglesrc/partitions HTTP/1.1
+Content-Type: application/json
+
+
+### Get a partition
+GET {{baseapi}}/qsys/catalogs/{{catalog}}/schemas/{{schema}}/tables/qrpglesrc/partitions/fizzbuzz HTTP/1.1
+Content-Type: application/json
+
+
