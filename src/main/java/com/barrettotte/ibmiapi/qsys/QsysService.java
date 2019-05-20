@@ -18,8 +18,7 @@ public class QsysService {
         try {
             final ResultSet resp = as400DAO.getCatalogs();
             return AS400Utils.convertResultSetToJSON(resp).toString(2);
-        } catch(Exception e){
-            //TODO: Error handling
+        } catch(final Exception e){
             e.printStackTrace();
             return e.getMessage();
         }
@@ -27,11 +26,10 @@ public class QsysService {
 
     public String getCatalog(final String cat){
         try{
-            final ResultSet resp = as400DAO.getCatalog(cat);
-            return "TODO";
+            //final ResultSet resp = as400DAO.getCatalog(cat);
+            return "TODO<br>" + cat;
             //return AS400Utils.convertResultSetToJSON(resp).toString(2);
-        } catch(Exception e){
-            //TODO: Error handling
+        } catch(final Exception e){
             e.printStackTrace();
             return e.getMessage();
         }
@@ -41,8 +39,7 @@ public class QsysService {
         try{
             final ResultSet resp = as400DAO.getSchemas(cat);
             return AS400Utils.convertResultSetToJSON(resp).toString(2);
-        } catch(Exception e){
-            //TODO: Error handling
+        } catch(final Exception e){
             e.printStackTrace();
             return e.getMessage();
         }
@@ -50,11 +47,10 @@ public class QsysService {
 
     public String getSchema(final String cat, final String schema){
         try{
-            final ResultSet resp = as400DAO.getSchema(cat, schema);
-            return "TODO";
+            //final ResultSet resp = as400DAO.getSchema(cat, schema);
+            return "TODO<br>" + cat + "/" + schema;
             //return AS400Utils.convertResultSetToJSON(resp).toString(2);
-        } catch(Exception e){
-            //TODO: Error handling
+        } catch(final Exception e){
             e.printStackTrace();
             return e.getMessage();
         }
@@ -64,21 +60,17 @@ public class QsysService {
         try{
             final ResultSet resp = as400DAO.getTables(cat, schema);
             return AS400Utils.convertResultSetToJSON(resp).toString(2);
-        } catch(Exception e){
-            //TODO: Error handling
-            e.printStackTrace();
+        } catch(final Exception e){
             return e.getMessage();
         }
     }
 
     public String getTable(final String cat, final String schema, final String table){
         try{
-            final ResultSet resp = as400DAO.getTable(cat, schema, table);
-            return "TODO";
+            //final ResultSet resp = as400DAO.getTable(cat, schema, table);
+            return "TODO<br>" + cat + "/" + schema + "/" + table;
             //return AS400Utils.convertResultSetToJSON(resp).toString(2);
-        } catch(Exception e){
-            //TODO: Error handling
-            e.printStackTrace();
+        } catch(final Exception e){
             return e.getMessage();
         }
     }
@@ -87,9 +79,7 @@ public class QsysService {
         try{
             final ResultSet resp = as400DAO.getPartitions(cat, schema, table);
             return AS400Utils.convertResultSetToJSON(resp).toString(2);
-        } catch(Exception e){
-            //TODO: Error handling
-            e.printStackTrace();
+        } catch(final Exception e){
             return e.getMessage();
         }
     }
@@ -99,9 +89,7 @@ public class QsysService {
         try{
             final ResultSet resp = as400DAO.getPartition(cat, schema, table, partition);
             return AS400Utils.convertResultSetToJSON(resp).toString(2);
-        } catch(Exception e){
-            //TODO: Error handling
-            e.printStackTrace();
+        } catch(final Exception e){
             return e.getMessage();
         }
     }

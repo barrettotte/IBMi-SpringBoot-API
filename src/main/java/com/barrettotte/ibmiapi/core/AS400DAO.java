@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.barrettotte.ibmiapi.exception.ServiceException;
-import com.barrettotte.ibmiapi.util.AS400Utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -31,7 +30,8 @@ public class AS400DAO implements IAS400Statements{
             cs.setQueryTimeout(DEFAULT_TIMEOUT_SECS);
             return cs.executeQuery();
         } catch(final SQLException e){
-            throw new ServiceException(e.getMessage());
+            e.printStackTrace();
+            throw new ServiceException("SQL error occurred querying catalogs");
         }
     }
 
@@ -43,7 +43,8 @@ public class AS400DAO implements IAS400Statements{
             cs.setString(1, cat.toUpperCase());
             return cs.executeQuery();
         } catch(final SQLException e){
-            throw new ServiceException(e.getMessage());
+            e.printStackTrace();
+            throw new ServiceException("SQL error occurred querying catalog");
         }
     }
 
@@ -55,7 +56,8 @@ public class AS400DAO implements IAS400Statements{
             cs.setString(1, cat.toUpperCase());
             return cs.executeQuery();
         } catch(final SQLException e){
-            throw new ServiceException(e.getMessage());
+            e.printStackTrace();
+            throw new ServiceException("SQL error occurred querying libraries");
         }
     }
 
@@ -68,7 +70,8 @@ public class AS400DAO implements IAS400Statements{
             cs.setString(2, schema.toUpperCase());
             return cs.executeQuery();
         } catch(final SQLException e){
-            throw new ServiceException(e.getMessage());
+            e.printStackTrace();
+            throw new ServiceException("SQL error occurred querying library");
         }
     }
 
@@ -81,7 +84,8 @@ public class AS400DAO implements IAS400Statements{
             cs.setString(2, schema.toUpperCase());
             return cs.executeQuery();
         } catch(final SQLException e){
-            throw new ServiceException(e.getMessage());
+            e.printStackTrace();
+            throw new ServiceException("SQL error occurred querying files");
         }
     }
 
@@ -97,7 +101,7 @@ public class AS400DAO implements IAS400Statements{
             return cs.executeQuery();
         } catch(final SQLException e){
             e.printStackTrace();
-            throw new ServiceException(e.getMessage());
+            throw new ServiceException("SQL error occurred querying file");
         }
     }
 
@@ -112,7 +116,7 @@ public class AS400DAO implements IAS400Statements{
             return cs.executeQuery();
         } catch(final SQLException e){
             e.printStackTrace();
-            throw new ServiceException(e.getMessage());
+            throw new ServiceException("SQL error occurred querying members");
         }
     }
 
@@ -130,7 +134,7 @@ public class AS400DAO implements IAS400Statements{
             return rs;
         } catch(final SQLException e){
             e.printStackTrace();
-            throw new ServiceException(e.getMessage());
+            throw new ServiceException("SQL error occurred querying member");
         }
     }
 

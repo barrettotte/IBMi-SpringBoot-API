@@ -2,7 +2,9 @@ package com.barrettotte.ibmiapi.exception;
 
 public class ServiceException extends Exception{
 
-    public ServiceException(){
+    private static final long serialVersionUID = 1L;
+
+    public ServiceException() {
         super();
     }
 

@@ -2,6 +2,7 @@ plugins {
     id 'org.springframework.boot' version '2.1.4.RELEASE'
 }
 apply plugin: 'java'
+apply plugin: 'eclipse'
 apply plugin: 'groovy'
 apply plugin: 'io.spring.dependency-management'
 
@@ -21,6 +22,8 @@ dependencies {
     compile group: 'net.sf.jt400', name: 'jt400', version: '9.8', classifier: 'jt400_jdk8'
     compile group: 'org.springframework', name: 'spring-jdbc', version: '5.1.6.RELEASE'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version: '2.1.4.RELEASE'
+    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.0'
+    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.0'
     compile group: 'org.json', name: 'json', version: '20180813'
 
     //compile group: 'log4j', name: 'log4j', version: '1.2.17'

@@ -1,8 +1,7 @@
 # IBMi-SpringBoot-API
 
 
-A Spring Boot API to easily expose IBMi information as JSON via REST endpoints.
-
+A Spring Boot API to easily expose IBMi information. Currently, has endpoints to return lists for libraries, files, and members.
 
 ## Dependencies
 * IBMi running V7R3
@@ -12,11 +11,14 @@ A Spring Boot API to easily expose IBMi information as JSON via REST endpoints.
 * Spring Boot 2.1.4
   * Actuator
   * DevTools
-  * Security
   * Web
+* Swagger 2 (/swagger-ui.html#/)
 
 
 ## Future Goals
+* Sending IBMi credentials in HTTP body
+* More information returned in each endpoint
+* Endpoints for qsys/catalogs/{catalog}/users and qsys/catalogs/{catalog}/users/{user}
 * Endpoint for base IFS /api/v1/ifs
 * Endpoint for viewing message queues (QSYSOPR)
 * Endpoint for viewing printer queues (QPRINT)
@@ -25,16 +27,11 @@ A Spring Boot API to easily expose IBMi information as JSON via REST endpoints.
 ## Endpoints
 | Endpoint                  | Description                  |
 | ------------------------- | ---------------------------- |
-| /api/v1                   |                              |
-| /api/v1/qsys              |                              |
-| /api/v1/qsys/catalogs     | Get all relational databases |
-| ../catalogs/<A>           |                              |
-| ../catalogs/<A>/schemas   | Get all libraries            |
-| ../schemas/<B>            |                              |
-| ../schemas/<B>/tables     | Get all files                |
-| ../tables/<C>             |                              |
-| ../tables/<C>/paritions   | Get members of file          |
-| ../partitions/<D>         | Get all lines of member      |
+| /actuator                 | Actuator                     |
+| /v2/api-docs              | Swagger 2 API Docs           |
+| /api/v1                   | Base core API (Does nothing) |
+
+[![endpoints](https://github.com/barrettotte/IBMi-SpringBoot-API/blob/master/screenshots/swagger-qsys.PNG)](https://github.com/barrettotte/IBMi-SpringBoot-API/blob/master/screenshots/swagger-qsys.PNG)
 
 
 ## Configuration
@@ -83,9 +80,7 @@ db.datasource.as400.driver-class-name = com.ibm.as400.access.AS400JDBCDriver
   * [Code Examples](https://www.programcreek.com/java-api-examples/?api=com.ibm.as400.access.AS400)
 * [JUnit 5 User Guide](https://junit.org/junit5/docs/current/user-guide/)
 * [MvnRepository](https://mvnrepository.com/)
-
-
-* RPGPGM
+* RPGPGM Articles
   * https://www.rpgpgm.com/2018/01/sql-views-to-list-sql-programs-and.html
   * https://www.rpgpgm.com/2017/11/sql-view-for-information-about-job.html
   * https://www.rpgpgm.com/2017/06/sql-views-for-authorization-lists.html
@@ -99,5 +94,4 @@ db.datasource.as400.driver-class-name = com.ibm.as400.access.AS400JDBCDriver
   * https://www.rpgpgm.com/2015/06/using-sql-to-get-information-from-job.html
   * https://www.rpgpgm.com/2015/05/getting-information-about-views-and.html
   * https://www.rpgpgm.com/2014/11/getting-list-of-files-in-ifs-directory.html
-  
 * [Toolbox for Java and JTOpen](https://developer.ibm.com/articles/i-javatoolbox/#toolbox-for-java-introduction)

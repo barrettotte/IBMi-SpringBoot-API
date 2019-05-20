@@ -1,12 +1,18 @@
 # Test IBMi API
 # CTRL+ALT+R - run request
 
+@ip=127.0.0.1:8044
 @baseapi = http://127.0.0.1:8044/api/v1/
 @catalog = ???
 @schema = bolib
 
 ### Base request
 GET {{baseapi}}/ HTTP/1.1
+Content-Type: application/json
+
+
+### Actuator
+GET {{ip}}/actuator/health HTTP/1.1
 Content-Type: application/json
 
 
