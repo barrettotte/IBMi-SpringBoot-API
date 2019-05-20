@@ -33,8 +33,7 @@ public class QsysController{
     @GetMapping("/catalogs/{cat}")
     @ApiOperation(value="View a relational database")
     public String catalog(
-      @ApiParam(value = "Name of relational database", required=true) 
-      @PathVariable("cat") final String cat
+      @ApiParam(value = "Name of relational database", required=true) @PathVariable("cat") final String cat
     ){
         return qsysService.getCatalog(cat);
     }
@@ -42,8 +41,7 @@ public class QsysController{
     @GetMapping("/catalogs/{cat}/schemas")
     @ApiOperation(value="View available libraries in relational database")
     public String schemas(
-      @ApiParam(value = "Name of relational database", required=true) 
-      @PathVariable("cat") final String cat
+      @ApiParam(value = "Name of relational database", required=true) @PathVariable("cat") final String cat
     ){
         return qsysService.getSchemas(cat);
     }
@@ -51,10 +49,8 @@ public class QsysController{
     @GetMapping("/catalogs/{cat}/schemas/{schema}")
     @ApiOperation(value="View a library")
     public String schema(
-      @ApiParam(value = "Name of relational database", required=true) 
-      @PathVariable("cat") final String cat, 
-      @ApiParam(value = "Name of library", required=true) 
-      @PathVariable("schema") final String schema)
+      @ApiParam(value = "Name of relational database", required=true) @PathVariable("cat") final String cat, 
+      @ApiParam(value = "Name of library", required=true) @PathVariable("schema") final String schema)
     {
         return qsysService.getSchema(cat, schema);
     }
@@ -62,10 +58,8 @@ public class QsysController{
     @GetMapping("/catalogs/{cat}/schemas/{schema}/tables")
     @ApiOperation(value="View available files in a library")
     public String tables(
-      @ApiParam(value = "Name of relational database", required=true) 
-      @PathVariable("cat") final String cat,
-      @ApiParam(value = "Name of library", required=true) 
-      @PathVariable("schema") final String schema)
+      @ApiParam(value = "Name of relational database", required=true) @PathVariable("cat") final String cat,
+      @ApiParam(value = "Name of library", required=true) @PathVariable("schema") final String schema)
     {
         return qsysService.getTables(cat, schema);
     }
@@ -73,12 +67,9 @@ public class QsysController{
     @GetMapping("/catalogs/{cat}/schemas/{schema}/tables/{table}")
     @ApiOperation(value="View a file")
     public String table(
-      @ApiParam(value = "Name of relational database", required=true) 
-      @PathVariable("cat") final String cat,
-      @ApiParam(value = "Name of library", required=true) 
-      @PathVariable("schema") final String schema,
-      @ApiParam(value = "Name of file", required=true) 
-      @PathVariable("table") final String table
+      @ApiParam(value = "Name of relational database", required=true) @PathVariable("cat") final String cat,
+      @ApiParam(value = "Name of library", required=true) @PathVariable("schema") final String schema,
+      @ApiParam(value = "Name of file", required=true)  @PathVariable("table") final String table
     ){
         return qsysService.getTable(cat, schema, table);
     }
@@ -86,12 +77,9 @@ public class QsysController{
     @GetMapping("/catalogs/{cat}/schemas/{schema}/tables/{table}/partitions")
     @ApiOperation(value="View available members in a file")
     public String partitions(
-      @ApiParam(value = "Name of relational database", required=true) 
-      @PathVariable("cat") final String cat,
-      @ApiParam(value = "Name of library", required=true) 
-      @PathVariable("schema") final String schema,
-      @ApiParam(value = "Name of file", required=true) 
-      @PathVariable("table") final String table
+      @ApiParam(value = "Name of relational database", required=true) @PathVariable("cat") final String cat,
+      @ApiParam(value = "Name of library", required=true) @PathVariable("schema") final String schema,
+      @ApiParam(value = "Name of file", required=true) @PathVariable("table") final String table
     ){
         return qsysService.getPartitions(cat, schema, table);
     }
@@ -99,14 +87,10 @@ public class QsysController{
     @GetMapping("/catalogs/{cat}/schemas/{schema}/tables/{table}/partitions/{partition}")
     @ApiOperation(value="View a member")
     public String partition(
-      @ApiParam(value = "Name of relational database", required=true) 
-      @PathVariable("cat") final String cat,
-      @ApiParam(value = "Name of library", required=true) 
-      @PathVariable("schema") final String schema,
-      @ApiParam(value = "Name of file", required=true) 
-      @PathVariable("table") final String table,
-      @ApiParam(value = "Name of member", required=true) 
-      @PathVariable("partition") final String partition
+      @ApiParam(value = "Name of relational database", required=true) @PathVariable("cat") final String cat,
+      @ApiParam(value = "Name of library", required=true) @PathVariable("schema") final String schema,
+      @ApiParam(value = "Name of file", required=true) @PathVariable("table") final String table,
+      @ApiParam(value = "Name of member", required=true)  @PathVariable("partition") final String partition
     ){
         return qsysService.getPartition(cat, schema, table, partition);
     }

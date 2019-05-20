@@ -15,15 +15,6 @@ A Spring Boot API to easily expose IBMi information. Currently, has endpoints to
 * Swagger 2 (/swagger-ui.html#/)
 
 
-## Future Goals
-* Sending IBMi credentials in HTTP body
-* More information returned in each endpoint
-* Endpoints for qsys/catalogs/{catalog}/users and qsys/catalogs/{catalog}/users/{user}
-* Endpoint for base IFS /api/v1/ifs
-* Endpoint for viewing message queues (QSYSOPR)
-* Endpoint for viewing printer queues (QPRINT)
-
-
 ## Endpoints
 | Endpoint                  | Description                  |
 | ------------------------- | ---------------------------- |
@@ -32,6 +23,134 @@ A Spring Boot API to easily expose IBMi information. Currently, has endpoints to
 | /api/v1                   | Base core API (Does nothing) |
 
 [![endpoints](https://github.com/barrettotte/IBMi-SpringBoot-API/blob/master/screenshots/swagger-qsys.PNG)](https://github.com/barrettotte/IBMi-SpringBoot-API/blob/master/screenshots/swagger-qsys.PNG)
+
+
+## Examples
+```curl http://127.0.0.1:8044/api/v1/qsys/catalogs/db/schemas/bolib/tables```
+```json
+[
+  {
+    "table_name": "QCLLESRC",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "QDDSSRC",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "QRPGLESRC",
+    "table_type": "BASE TABLE"
+  },
+  {
+    "table_name": "QRPGSRC",
+    "table_type": "BASE TABLE"
+  }
+]
+```
+
+```curl http://127.0.0.1:8044/api/v1/qsys/catalogs/db/schemas/bolib/tables/qrpglesrc/partitions```
+```json
+[
+  {
+    "data_size": 1,
+    "partition_text": "Fizzbuzz in RPGLE Free",
+    "partition_number": 10,
+    "create_timestamp": "2019-04-02 11:42:18.0",
+    "last_save_timestamp": "2019-05-18 03:41:46.0",
+    "number_rows": 16,
+    "number_row_pages": 1,
+    "source_type": "RPGLE",
+    "system_table_member": "FIZZBUZZ "
+  },
+  // ...
+]
+```
+
+```curl http://127.0.0.1:8044/api/v1/qsys/catalogs/db/schemas/bolib/tables/qrpglesrc/partitions/fizzbuzz```
+```json
+[
+  {
+    "srcdat": 190402,
+    "srcseq": 1,
+    "srcdta": " /free "
+  },
+  {
+    "srcdat": 190402,
+    "srcseq": 2,
+    "srcdta": " // The classic fizzbuzz program in RPGLE Free "
+  },
+  {
+    "srcdat": 190402,
+    "srcseq": 3,
+    "srcdta": " dcl-s num int(10); "
+  },
+  {
+    "srcdat": 190402,
+    "srcseq": 4,
+    "srcdta": " "
+  },
+  {
+    "srcdat": 190402,
+    "srcseq": 5,
+    "srcdta": " for num = 1 to 100; "
+  },
+  {
+    "srcdat": 190403,
+    "srcseq": 6,
+    "srcdta": " if %REM(num:3) = 0 and %REM(num:5) = 0; "
+  },
+  {
+    "srcdat": 190402,
+    "srcseq": 7,
+    "srcdta": " dsply ('num - ' + %char(num) + ' FIZZBUZZ'); "
+  },
+  {
+    "srcdat": 190402,
+    "srcseq": 8,
+    "srcdta": " elseif %rem(num:3) = 0; "
+  },
+  {
+    "srcdat": 190402,
+    "srcseq": 9,
+    "srcdta": " dsply ('num - ' + %char(num) + ' FIZZ'); "
+  },
+  {
+    "srcdat": 190402,
+    "srcseq": 10,
+    "srcdta": " elseif %rem(num:5) = 0; "
+  },
+  {
+    "srcdat": 190402,
+    "srcseq": 11,
+    "srcdta": " dsply ('num - ' + %char(num) + ' BUZZ'); "
+  },
+  {
+    "srcdat": 190402,
+    "srcseq": 12,
+    "srcdta": " else; "
+  },
+  {
+    "srcdat": 190402,
+    "srcseq": 13,
+    "srcdta": " dsply ('num - ' + %char(num)); "
+  },
+  {
+    "srcdat": 190402,
+    "srcseq": 14,
+    "srcdta": " endif; "
+  },
+  {
+    "srcdat": 190402,
+    "srcseq": 15,
+    "srcdta": " endfor; "
+  },
+  {
+    "srcdat": 190402,
+    "srcseq": 16,
+    "srcdta": " *INLR = *ON; "
+  }
+]
+```
 
 
 ## Configuration
@@ -44,6 +163,15 @@ db.datasource.as400.password = ?
 db.datasource.as400.url = jdbc:as400://?/;prompt=false;naming=system;*LIBL
 db.datasource.as400.driver-class-name = com.ibm.as400.access.AS400JDBCDriver
 ```
+
+
+## Future Goals
+* Sending IBMi credentials in HTTP body
+* More information returned in each endpoint
+* Endpoints for qsys/catalogs/{catalog}/users and qsys/catalogs/{catalog}/users/{user}
+* Endpoint for base IFS /api/v1/ifs
+* Endpoint for viewing message queues (QSYSOPR)
+* Endpoint for viewing printer queues (QPRINT)
 
 
 ## Development
